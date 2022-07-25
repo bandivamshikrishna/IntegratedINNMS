@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            margin-top: 10px;
+        }
+        .container{
+            background-color: whitesmoke;
+            margin-left: 250px;
+            height:100%;
+            margin-top: 60px;
+            width: 83.5%;
+            border-radius: 10px;
+            box-shadow:4px;
+        
+        }
+        label{
+            margin-left: 200px;
+            margin-top: 50px;
+        }
+        .edit{
+            margin: 5px;
+            margin-left: 200px;
+            padding: 10px;
+            width: 700px;
+            border-radius: 4px;
+            border: 2px solid gray;
+        }
+        .edit-profile-update{
+            display: block;
+            width: 100px;
+            background-color: blueviolet;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 30px;
+            margin-left: 500px;
+            padding: 10px;
+            border:none;
+            border-radius: 4px;
+        }
+        .cancel{
+            
+            width: 100px;
+            background-color: orange;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            margin-left: 800px;
+            margin-top :50px;
+            padding: 10px;
+            border-radius: 4px;
+            border: none;
+           }
+        .bt{
+            margin-top: -26px;
+            
+        }
+        .file{
+            margin-left: 200px;
+            width:700px;
+        }
+         h1{
+            color:blue;
+         }
+    </style>
+</head>
+<body>
+    {% include 'customer/base.html' with customer=request.user.customer %}
+    <div class="container"><br>
+        <center><h1>  Edit Profile</h1></center>
+        <hr color="orange" width="1100"><br>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+        <label> First Name</label><br>
+        {{userupdateform.first_name.errors}}
+        {% render_field userupdateform.first_name|attr:"class:edit" %}<br>
+        <label> Last Name</label><br>
+        {{userupdateform.last_name.errors}}
+        {% render_field userupdateform.last_name|attr:"class:edit" %}<br>
+        <label>Gender </label><br>
+        {{customerupdateform.gender.errors}}
+        {% render_field customerupdateform.gender|attr:"class:edit" %}<br>
+        <label> E-mail</label><br>
+        {{userupdateform.email.errors}}
+        {% render_field userupdateform.email|attr:"class:edit" %}<br>
+        <label>occupation</label><br>
+        {% render_field hosteluserupdateform.occupation|attr:"class:edit" %}<br><br>
+        <label>Institute/company name</label><br>
+        {% render_field hosteluserupdateform.work_place|attr:"class:edit" %}<br><br>
+        <label>Course/Profession</label><br>
+        {% render_field hosteluserupdateform.profession|attr:"class:edit" %}<br><br>
+        <label>caste</label><br>
+        {% render_field hosteluserupdateform.caste|attr:"class:edit" %}<br><br>
+        <label>Contact Number</label><br>
+        {% render_field hosteluserupdateform.contact_number|attr:"class:edit" %}<br><br>
+        <label>Guardian Name</label><br>
+        {% render_field hosteluserupdateform.guardian_name|attr:"class:edit" %}<br><br>
+        <label>Guardian Relation</label><br>
+        {% render_field hosteluserupdateform.guardian_relation|attr:"class:edit" %}<br><br>
+        <label>Guardian Contact Number</label><br>
+        {% render_field hosteluserupdateform.guardian_contact_number|attr:"class:edit" %}<br><br>
+        <label>Emergency Contact Number</label><br>
+        {% render_field hosteluserupdateform.emergency_contact_number|attr:"class:edit" %}<br><br>
+        <label>Permanent Address</label><br>
+        {% render_field hosteluserupdateform.permanent_address|attr:"class:edit" %}<br><br>
+        <label>City</label><br>
+        {% render_field hosteluserupdateform.city|attr:"class:edit" %}<br><br>
+        <label>State</label><br>
+        {% render_field hosteluserupdateform.state|attr:"class:edit" %}<br><br>
+        <label>pincode</label><br>
+        {% render_field hosteluserupdateform.pincode|attr:"class:edit" %}<br><br>
+
+        <label>Image</label><br>
+        {{customerupdateform.profile_pic.errors}}
+        {% render_field customerupdateform.profile_pic|attr:"class:file" %}<br><br>
+
+        <div>     
+
+        <input type="submit" value="Update" class="edit-profile-update">
+        </div>
+</form>
+    </div>
+</body>
+</html>

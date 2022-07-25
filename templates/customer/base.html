@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <style>
+           body{
+            background: #dedede;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .dropdown{
+            margin: 0 auto;
+        }
+        nav{
+            height:60px;
+            background-color:#2c3e50;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            margin-top:-66px;
+        }
+        
+        .logo{
+  font-size:20px;
+  font-weight: Bold;
+ 
+}
+.logo p{
+  float:left;
+  color:white;
+  text-transform: uppercase;
+  margin-top:15px;
+  margin-left: 25px;
+}
+nav ul{
+    padding:0;
+    margin: 0;
+    float:right;
+    margin-right: 30px;
+}
+nav ul li{
+    background: #2c3e50;
+    position: relative;
+    list-style: none;
+    display: inline-block;
+}
+nav ul li a {
+    display: block;
+    padding: 0 15px;
+    color: white;
+    text-decoration: none;
+    line-height: 60px;
+    font-size: 20px;
+}
+
+nav ul ul{
+    position: absolute;
+    top:60px;
+    display: none;
+}
+
+nav ul ul li{
+    width: 217px;
+    float:none;
+    display: list-item;
+    position: relative;
+}
+
+
+.sidebar{
+    background-color:#2c3e50;
+    margin-top:70px;
+    position: fixed;
+    left:0;
+    width:250px;
+    margin-top: -13px;
+    height:100%;
+}
+
+.sidebar a{
+   color:#ccc;
+   display: block;
+   width: 100%;
+    line-height:60px;
+    text-decoration: none;
+    padding-left: 40px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    transition-property: background;
+
+}
+.sidebar a:hover{
+    background:#19b3d3 ;
+}
+sidebar i{
+    padding-right: 10px;
+
+}
+.sidebar .profile_image{
+    width: 100px;
+    height: 100px;
+    margin-top: 40px;
+    border-radius: 100px;
+    margin-bottom: 10px;
+
+}
+.sidebar h4{
+    color:#ccc;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="dropdown">
+        <nav>
+         <div class="logo">
+             <p><i class='fas fa-university' style='font-size:25px;color:white'></i>Hostel Managment System</p>
+             <ul>
+            
+        </nav>
+    </div> 
+    
+    <div>
+        <!----sidebar start-->
+        <div class="sidebar">
+            <center>
+                <img src="{{customer.profile_pic.url}}" class="profile_image">
+                <h4>{{request.user|capfirst}}(Customer)</h4>
+            </center>
+           
+        <a href="{% url 'customer-dashboard' %}"><i style="font-size:24px" class="fa">&#xf0e4;</i>
+            &emsp;<span>Dash board</span></a>
+
+        <a href="{% url 'customer-room-booking' %}"> <i style="font-size:24px" class="fa">&#xf1ad;</i> &emsp;<span>Room Booking</span></a>
+       
+        {% if hostelcustomer %}
+        <a href="{% url 'customer-room-details' %}"><i class='fa fa-hotel'></i> &emsp;<span>Room Details</span></a>
+        {% endif %}
+
+
+        {% if hostelcustomer %}
+            {% if 'more' in hosteluser.duration %}
+              <a href="{% url 'customer-various-customizations' %}"><i class='fa fa-hotel'></i> &emsp;<span>Customize</span></a>
+            {% endif %}
+        {% endif %}
+        
+
+        {% if hostelcustomer %}
+            <a href="{% url 'hostel-customer-profile' %}"><i style="font-size:24px" class="fa">&#xf2be;</i> &emsp;<span>Profile</span></a>
+        {% else %}
+            <a href="{% url 'customer-profile' %}"><i style="font-size:24px" class="fa">&#xf2be;</i> &emsp;<span>Profile</span></a>
+        {% endif %}
+
+
+        {% if hostelcustomer %}
+            {% if hosteluser.admin_status %}
+                 <a href="{% url 'customer-complaint' %}"><i style="font-size:24px" class="fa">&#xf2be;</i> &emsp;<span>complaint</span></a>
+            {% endif %}
+        {% endif %}
+
+        <a href="{% url 'customer-change-password' %}"><i style="font-size:24px" class="fa">&#xf023;</i> &emsp;<span>Change Password</span></a>
+        <a href="{% url 'customer-logout' %}"><i class="fa fa-power-off" style="font-size:24px"></i> &emsp;<span>Logout</span></a>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    
+h1{
+    margin-top: 10px;
+}
+.container{
+    background-color: whitesmoke;
+    margin-left: 250px;
+    height:650px;
+    margin-top: 60px;
+    width: 1275px;
+    border-radius: 10px;
+    box-shadow:4px;
+
+}
+h1{
+    color: blue;
+}
+table, th, td {
+  border: 1px solid gray;
+  border-collapse: collapse;
+  border-color: gray;
+  font-size: 20px;
+  font-weight: 200px;
+}
+
+    </style>
+</head>
+<body>
+    {% include 'admin/base.html' %}
+<div class="container"><br>
+    <center><h1>Room Details</h1></center>
+    <hr color="orange" width="1100">
+    <br>
+    <table border="1" height="500" width="1200" align="center" >
+        <tr>
+            <td colspan="6">
+      <center><font color="green"> Room Related Information</font> </center>
+           
+
+            </td>  
+        </tr>
+        
+            <tr align="center">
+          <th> Room No</th>  <td>{{hosteluser.room_number}}</td>   <th>Seater</th>  <td>{{hosteluser.room.room_type}}</td>   <th>Fees Per Month</th> <td>Rs {{hosteluser.room.room_fees}}/-</td>
+        </tr>
+            <tr align="center">
+           <th> Stay From</th>  <td>{{hosteluser.check_in}}</td>   <th>Duration (In Month)</th> <td>{{hosteluser.duration}}</td>  <th> Total Fee</th>  <td>Rs {{hosteluser.total_fees}}/- </td> 
+        </tr>
+        <tr align="center" >
+              
+          </tr>
+          {% comment %} <tr align="center">
+            <th> Total Fee</th>  <td>Rs {{hosteluser.total_fees}}/- </td> 
+          </tr> {% endcomment %}
+          <tr>
+                        <td colspan="6">
+            <center><font color="green"> Personal Information</font> </center>
+            </td>  
+              </tr>
+              <tr align="center" >
+                <th> Profile Image</th>  <td> <img src=""> </td>   <th>Full Name</th> <td>{{hosteluser.customer.user.first_name}} {{hosteluser.customer.user.last_name}}</td>  <th> Email</th> <td>{{hosteluser.customer.user.email}}</td>
+              </tr>
+              <tr align="center" >
+                <th> Contact No</th>  <td>{{hosteluser.contact_number}}</td>   <th>Gender</th> <td>{{hosteluser.customer.gender}}</td>  <th>Course\profession </th> <td> {{hosteluser.profession}}</td>
+              </tr>
+              <tr align="center" >
+                <th> Emergence Contact No</th>  <td>{{hosteluser.emergency_contact_number}}</td>   <th>Guardian Name</th> <td> {{hosteluser.guardian_name}}</td>  <th> Guardian Relation</th> <td> {{hosteluser.guardian_relation}}</td>
+              </tr>
+              <tr align="center">
+                <th> Guardian Contact No</th>  <td>{{hosteluser.guardian_contact_number}}</td> 
+              </tr>
+              <tr>
+                <td colspan="6">
+               <center><font color="green"> Address</font> </center>
+              </td>  
+                </tr>
+                <tr align="center">
+                 <th> Permanent Address</th><td  colspan="2" >{{hosteluser.permanent_address}}</td> <th>state</th>  <td>{{hosteluser.state}}</td>
+                
+                  </tr>
+                  <tr align="center">
+                        <th>city</th> <td>{{hosteluser.city}}</td>  <th>pincode</th>  <td>{{hosteluser.pincode}}</td>
+                  </tr>
+          
+        
+        <table>
+        
+
+</div>
+
+    
+</body>
+</html>

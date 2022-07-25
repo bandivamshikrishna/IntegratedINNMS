@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+{% load i18n %}
+{% load static %}
+{% load widget_tweaks %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: ghostwhite;
+           font-family: Arial, Helvetica, sans-serif;
+        }
+        .container{
+    background-color: whitesmoke;
+    margin-left: 250px;
+   position: static;
+    margin-top: 60px;
+    width: 1275px;
+    border-radius: 10px;
+    box-shadow:4px;
+
+}
+label{
+    margin-top: 80px;
+    margin-left: 150px;
+}
+.succes{
+    margin: 5px;
+    margin-left: 150px;
+    padding: 10px;
+    width: 700px;
+    border-radius: 4px;
+    border: 2px solid gray;
+}
+.date,.lage{
+    margin-left: 8px;
+}
+.cal,.nage{
+    margin: 5px;
+    width: 100px;
+    padding: 8px;
+
+}
+.ashok{
+    margin: 5px;
+    margin-left: 900px;
+    margin-top: -65px;
+    width: 200px;
+    padding: 10px;
+}
+.age{
+    margin: 5px;
+    margin-left: 1050px;
+    margin-top: -78px;
+  
+}
+select{
+    margin: 5px;
+    margin-left: 150px;
+    padding: 10px;
+    width: 720px;
+    border-radius: 4px;
+    border: 2px solid gray;
+}
+
+
+label{
+    margin-top: 80px;
+    margin-left: 150px;
+}
+.succes{
+    margin: 5px;
+    margin-left: 150px;
+    padding: 10px;
+    width: 700px;
+    border-radius: 4px;
+    border: 2px solid gray;
+}
+select{
+    margin: 5px;
+    margin-left: 150px;
+    padding: 10px;
+    width: 720px;
+    border-radius: 4px;
+    border: 2px solid gray;
+}
+.vDateField{
+    margin: 5px;
+    margin-left: 150px;
+    padding: 10px;
+    width: 700px;
+    border-radius: 4px;
+    border: 2px solid gray;
+
+}
+textarea{
+    margin-left: 150px; 
+}
+input[type=submit]{
+width: 300px;
+padding: 10px;
+background-color: green;
+color: white;
+border: none;
+margin-left:200px;
+
+
+}
+h1{
+    color:blue;
+}
+
+
+    </style>
+
+    <script type="text/javascript" src="{% url 'js-catalog' %}"></script>
+<script type="text/javascript" src="{% static '/admin/js/core.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static '/admin/css/widgets.css' %}">
+<style>.calendar>table>caption{caption-side:unset}</style><!--caption fix for bootstrap4-->
+{{ form.media }} 
+{{roomform.media}}
+    
+
+</head>
+<body>
+    {% include 'customer/base.html' with customer=request.user.customer %}
+    
+    <div class="container"><br>
+        {{roomform.non_field_errors}}
+    {{userform.non_field_errors}}
+    {{customerform.non_field_errors}}
+        <center><h1>Room Registration Form</h1></center>
+        <hr color="orange" width="1100">
+       <form action="" method="post">
+           {% csrf_token %}
+    <label>Room</label><br>
+    {{roomform.room.errors}}
+    {% render_field roomform.room|attr:"class:succes" requried=true %}<br>
+    <label>First name</label><br>
+    {{userform.first_name.errors}}
+    {% render_field userform.first_name|attr:"class:succes" requried=true %}<br>
+    <label>Last name</label><br>
+    {{userform.last_name.errors}}
+    {% render_field userform.last_name|attr:"class:succes" requried=true %}<br>
+    <label>Gender</label><br>
+    {{customerform.gender.errors}}
+    {% render_field customerform.gender|attr:"class:succes" requried=true  %}<br>
+    <label>Email</label><br>
+    {{userform.email.errors}}
+    {% render_field userform.email|attr:"class:succes" requried=true %}<br>
+    {% comment %} <div class="ashok"> {% endcomment %}
+    <label>Date of birth</label><br>
+    {{roomform.date_of_birth.errors}}
+    {% comment %} {% render_field roomform.date_of_birth|attr:"class:vDateField"  size="10"  %} {% endcomment %}
+    {% render_field roomform.date_of_birth|attr:"requried:true" class="vDateField" size="10"  %}<br>
+    {% comment %} </div> {% endcomment %}
+    {% comment %} <div class="age"> {% endcomment %}
+    <label>Age</label><br>
+    {{roomform.age.errors}}
+    {% render_field roomform.age|attr:"class:succes" requried=true %}<br>
+{% comment %} </div> {% endcomment %}
+     
+<label>Check-in(opproximatly)</label><br>
+{{roomform.check_in.errors}}
+{% render_field roomform.check_in|attr:"requried:true" class="vDateField" size="10" %}<br>
+
+     
+<label>duration in month(opproximatly)</label><br>
+{{roomform.duration.errors}}
+{% comment %} <select name="dropdone">
+    <option value="months">months</option>
+    <option value="3">3</option>
+    <option value="6">6</option>
+    <option value="9">9</option>
+    <option value="1year">1year</option>
+    <option value="2year">2year</option>
+</select>  {% endcomment %}
+
+{% render_field roomform.duration|attr:"class:succes" requried=true %}<br>
+
+
+<label>Occupation</label><br>
+{{roomform.occupation.errors}}
+{% comment %} <select name="dropdone">
+    <option value="student">student</option>
+    <option value="empolyee">empolyee</option>
+   
+</select> {% endcomment %}
+ {% render_field roomform.occupation|attr:"class:succes" requried=true %}<br>
+     
+<label>Institute/company name</label><br>
+{{roomform.work_place.errors}}
+{% render_field roomform.work_place|attr:"class:succes" requried=true %}<br>
+<label>Course/Profession</label><br>
+{{roomform.profession.errors}}
+{% render_field roomform.profession|attr:"class:succes" requried=true %}<br>
+       
+<label>Caste</label><br>
+{{roomform.caste.errors}}
+{% comment %} <select name="dropdone">
+    <option value="bca">BCA</option>
+    <option value="bcb">BCB</option>
+    <option value="bcc">BCC</option>
+    <option value="bcd">BCD</option>
+    <option value="oc">OC</option>
+    <option value="sc/st">SC/ST</option>
+    <option value="other">OTHER</option>
+</select>  {% endcomment %}
+{% render_field roomform.caste|attr:"class:succes" requried=true %}<br>
+<label>Contact number</label><br>
+{{roomform.contact_number.errors}}
+{% render_field roomform.contact_number|attr:"class:succes" requried=true  %}<br>
+<label>Guardian name</label><br>
+{{roomform.guardian_name.errors}}
+{% render_field roomform.guardian_name|attr:"class:succes" requried=true %}<br>
+<label>Guardian Relation</label><br>
+{{roomform.guardian_relation.errors}}
+{% render_field roomform.guardian_relation|attr:"class:succes" requried=true %}<br>
+<label>Guardian Contact Number</label><br>
+{{roomform.guardian_contact_number.errors}}
+{% render_field roomform.guardian_contact_number|attr:"class:succes" requried=true  %}<br>
+<label>Emergency Contact Number</label><br>
+{{roomform.emergency_contact_number.errors}}
+{% render_field roomform.emergency_contact_number|attr:"class:succes" requried=true %}<br>
+
+<label>Permanet Adress</label><br>
+{{roomform.permanent_address.errors}}
+{% comment %} <textarea rows="4" cols="95" name="comment" form="usrform">Enter text here...</textarea><br> {% endcomment %}
+
+{% render_field roomform.permanent_address|attr:"class:succes" requried=true  %}<br>
+
+
+
+<label>City</label><br>
+{{roomform.city.errors}}
+{% render_field roomform.city|attr:"class:succes" requried=true  %}<br>
+<label>state</label><br>
+{{roomform.state.errors}}
+{% render_field roomform.state|attr:"class:succes" requried=true %}<br>
+<label>pincode</label><br>
+{{roomform.pincode.errors}}
+{% render_field roomform.pincode|attr:"class:succes" requried=true %}<br><br>
+<input type="submit" value="submit"><br><br>
+
+
+</form>
+
+
+  
+    </div>
+
+    
+</body>
+</html>

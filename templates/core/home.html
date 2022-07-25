@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<!--Get your own code at fontawesome.com-->
+    <title>Document</title>
+    <style>
+       
+img{
+  margin-top: 0px; 
+
+}
+.horizantal{
+    width: 99%;
+}
+.bedroom{
+    margin-left: 80px;   
+    margin-top: -15px;
+}
+.hbedroom{
+    margin-left: 80px;
+    color: red;
+
+}
+.hkitchen{
+    margin-left: 450px;
+    margin-top: -19%;
+    color: red;
+
+}
+.kitchen{
+    margin-left: 450px;
+    margin-top: -1%;
+}
+.hbathroom{
+    margin-left: 810px;
+    margin-top: -19%;
+    color: red;
+}
+.bathroom{
+    margin-left: 810px;
+    margin-top: -1%;
+}
+.hdinning{
+    margin-left: 1190px;
+    margin-top: -19%;
+    color: red;
+}
+.dinning{
+    margin-left: 1190px;
+    margin-top: -1%;
+}
+.container{
+    margin-top: 20px;
+    background-color: pink;
+    margin-left: 80px;
+    width: 625px;
+    height: 500px;
+    border-radius: 4px;
+}
+h3{
+   
+    margin-left: 10px;
+    color:green;
+}
+hr{
+    width: 500px;
+    background-color: gray;
+}
+.container1{
+    margin-top: -500px;
+    background-color: gray;
+    margin-left: 800px;
+    width: 625px;
+    height: 500px;
+    border-radius: 4px;
+}
+.regula-menu{
+   
+    margin-left: 10px;
+    color:blue;
+}
+hr{
+    width: 100%;
+    background-color: gray;
+}
+table{
+    text-align: center;
+}
+
+
+tr:nth-child(even) {
+  background-color: #D6EEEE;
+}
+.head{
+    background-color: yellow;
+}
+.week{
+    background-color: red;
+}
+.container2{
+    background-color: darkcyan;
+   width: 100%;
+  margin-left:0px;
+    height: 200px;
+}
+    </style>
+</head>
+<body>
+    {% include 'core/navbar.html' %}
+    <img src="{% static 'core/hostel.jpeg' %}"  width="100%" height="686px">
+    <br>
+    <hr class="horizantal"><br><br>
+    <div >
+    <h2 class="hbedroom">Bedroom Area </h2>
+    <img src="{% static 'core/bedroom.jpeg' %}" width="250px" height="250px" class="bedroom">
+</div>
+<div>     
+    <h2 class="hkitchen">Kitchen Area</h2>
+    <img src="{% static 'core/kitchen.jpeg' %}" width="250px" height="250px" class="kitchen">
+</div>
+<div>
+    <h2 class="hbathroom"> Bathroom Area</h2> 
+    <img src="{% static 'core/bathroom.jpeg' %}" width="250px" height="250px" class="bathroom">
+</div> 
+<div>
+      <h2 class="hdinning"> Dinning Area</h2>
+      <img src="{% static 'core/dinning.jpeg' %}" width="250px" height="250px" class="dinning">
+    </div>
+    <div class="container"><br>
+<h3>Hostel Rules And Regulation:-</h3>
+<hr>
+
+    <p><font color="red">&emsp; {{rules.rules|linebreaks}}</font></p><br>
+    {% comment %} <p><font color="green"> &emsp; The students are expected to give their biometric roll call before 9:30 pm on week<br>&emsp; days and before 10:00 pm on weekends. </font></p><br>
+    <p><font color="blue"> &emsp; No diner shall waste food. Paying mess bill does not entitle a dinner to waste food. </font></p> {% endcomment %}
+
+    </div>
+    <div class="container1"><br>
+        <h3 class="regula-menu">Regular Menu:-</h3>
+        <hr>
+        <table border="1" height="390" align="center" bordercolor="gray" width="600" cellpadding="0" cellspacing="0" >
+           <tr class="head"> 
+            <th > DAYS </th>      <th> BREAKFAST</th>     <th> LUNCH </th>  <th>  DINNER</th>
+        
+           </tr>
+           {% for menu in menus %}
+        <tr>
+            <td style="color:red;">{{menu.day}}  </td> <td> {{menu.breakfast}} </td>     <td> {{menu.lunch}} </td>   <td> {{menu.dinner}}</td>
+        </tr>
+        {% endfor %}
+        {% comment %} <tr>
+            <td  style="color:red;">Monday  </td>  <td> Poha  </td>     <td> White Rice,<br>Paneer,Rasam or Curd Rice </td>   <td> Chappathi,<br>Veg.Kurma  </td>
+        </tr>
+        <tr>
+            <td style="color:red;"  > Tuesday </td>  <td>Idly   </td>     <td> White Rice,<br>Paneer,Rasam or Curd Rice  </td>   <td> Parotta ,<br>Veg Kurma  </td>
+        </tr>
+        <tr>
+            <td style="color:red;">Wednesday  </td>  <td> White Pongal  </td>     <td>White Rice,<br>Paneer,Rasam or Curd Rice  </td>   <td> Idiappam Veg Kurma  </td>
+        </tr>
+        <tr>
+            <td style="color:red;"  >Thursday  </td>  <td> Semiya Kichhadi  </td>     <td> White Rice,<br>Paneer,Rasam or Curd Rice </td>   <td>White Rice,Rasam<br> Poriyal,Curd Rice   </td>
+        </tr>
+        <tr>
+            <td style="color:red;"> Friday </td>  <td>Dosa   </td>     <td> White Rice,<br>Paneer,Rasam or Curd Rice </td>   <td> Puri Masala  </td>
+        </tr>
+        <tr>
+            <td style="color:red;" > Saturday</td>  <td> Poha Samosa  </td>     <td> White Rice,<br>Paneer,Rasam or Curd Rice </td>   <td> White Rice,Rasam<br>Poriyal,Curd Rice  </td>
+        </tr> {% endcomment %}
+    </table>
+            
+    </div><br><br>
+    <div class="container2"><br>
+     <center><h3  style="color:white;" >Hostel Adress :-</h3> 
+        <p><i class="fa fa-map-marker" style="font-size:20px;color:yellow"> Dilsukhnagar,Hyderabad,Telangana</i></p>
+        <p><i class="fa fa-envelope" aria-hidden="true"  style="font-size:20px;color:yellow">kvamshi340@gmail.com</i></p>
+        <p><i class="fa fa-phone" style="font-size:20px;color:yellow">+91 8309745756</i></p>
+    </center>
+    </div>
+</body>
+</html>

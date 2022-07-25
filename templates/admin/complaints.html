@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+
+    <style>
+
+        
+        body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: ghostwhite;
+}
+.container{
+    background-color: whitesmoke;
+    margin-left: 250px;
+    height:650px;
+    margin-top: 60px;
+    width: 1275px;
+    border-radius: 10px;
+    box-shadow:4px;
+
+}
+
+h1{
+  color:blue;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  border-color: black;
+}
+th {
+  background-color: darkgray;
+}
+    </style>
+</head>
+<body>
+    {% include 'admin/base.html' %}
+<div class="container"><br><br><br>
+<center><h1>Hostel Customer Complaints</h1></center>
+<hr color="orange" width="1100"><br>
+<table border="1" height="200" width="1000" align="center" >
+<tr align="center" background-color="blue">
+    <th >s.no</th>   <th>Name</th>  <th>Room Number</th> <th> Complaint</th>
+</tr>
+ {% for complaint in  complaints %}
+<tr align="center" >
+    <td>{{forloop.counter}}</td>
+       <td> {{complaint.hostel_customer.customer.user}}</td>
+       <td>{{complaint.hostel_customer.room_number}}</td>
+       <td>{{complaint.complaint}}</td>
+       {% comment %} <td><a href="{% url 'admin-customer-view-details' hostel_user.id %}">View Details</a></td> {% endcomment %}
+          
+</tr>
+{% endfor %} 
+<table>
+</div>
+</body>
+</html>

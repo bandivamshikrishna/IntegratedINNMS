@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            background-color: whitesmoke;
+            margin-left: 252px;
+            height:650px;
+            margin-top: 64px;
+            width: 1280px;
+            border-radius: 10px;
+            box-shadow:4px;
+        
+        }
+        h1{
+            color:blue;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+          }
+          .viewroom{
+            text-decoration:none;
+
+          }
+    </style>
+</head>
+<body>
+    {% include 'designer/base.html' with designer=request.user.designer %}
+    <div class="container"><br>
+        <center><h1> My Room Designs </h1><br>
+        Rooms designed by {{request.user|capfirst}}</center>
+        <hr color="orange" width="1100"><br>
+        <table border="1" height="200" width="1000" align="center" calspanig  >
+        <tr align="center" background-color="blue">
+            <th >s.no</th> <th>Theme</th> <th>view Room</th> <th>Price</th>
+        </tr>
+        {% for room in rooms %}
+        <tr align="center" >
+            <td>{{forloop.counter}}</td>  
+            <td>{{room.theme|capfirst}}</td>
+            <td><a href="{% url 'designer-view-room' room.id %}" class="viewroom">View Room</a></td>
+            <td>{{room.price}}</td>
+          
+        {% endfor %}  
+        </tr>
+        
+    </table>
+</body>
+</html>

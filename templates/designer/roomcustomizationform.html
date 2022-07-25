@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container{
+        background-color: whitesmoke;
+        margin-left: 252px;
+        height:650px;
+        margin-top: 64px;
+        width: 1280px;
+        border-radius: 10px;
+        box-shadow:4px;
+    
+    }
+    h1{
+        margin-left: 35px;
+        color: blue;
+    }
+    .Left{
+        margin-left:150px;
+    
+    }
+    
+    .right{
+  
+        margin-left: 900px;
+    }
+   
+    .blank1{
+        margin-top: -98px;
+      
+    }
+    input[type=submit]{
+
+        margin-left:550px;
+        margin-top:100px;
+        padding:10px;
+        background-color:blue;
+        color:white;
+        border-radius:4px;
+        border:none;
+
+    }
+</style>
+<body>
+    {% include 'designer/base.html' with designer=request.user.designer %}
+    
+    <div class="container"><br>
+        <center><h1>Customization</h1>
+        Imagine that you are standing in the middle of the room facing the door side.Now start your custamization</center>
+        <hr color="orange" width="1100"><br>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}<br><br>
+
+        <label class="Left">Left side wall design</label><br>
+        {% render_field roomform.left|attr:"required:true" class="Left" %}<br><br><br><br>
+
+       <div class="blank1">
+        <label class="right">right side wall design</label><br>
+        {% render_field roomform.right|attr:"required:true"  class="right" %}<br><br><br><br>
+       </div>
+
+        <label class="Left">top side wall design</label><br>
+        {% render_field roomform.top|attr:"required:true" class="Left" %}<br><br><br><br>
+
+        <div class="blank1">
+        <label class="right">Bottom side wall design</label><br>
+        {% render_field roomform.bottom|attr:"required:true"  class="right" %}<br><br><br><br>
+    </div>
+
+        <label class="Left">front side wall design</label><br>
+        {% render_field roomform.front|attr:"required:true" class="Left" %}<br><br><br><br>
+
+        <div class="blank1">
+        <label class="right">Back side wall design</label><br>
+        {% render_field roomform.back|attr:"required:true"  class="right" %}<br><br><br><br>
+    </div>
+
+        <input type="submit" value="view room">
+    </div>
+</body>
+</html>

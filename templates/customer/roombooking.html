@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+   body{
+            background: #dedede;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+    background-color: whitesmoke;
+    margin-left: 250px;
+    height:650px;
+    margin-top: 60px;
+    width: 1250px;
+    border-radius: 10px;
+    box-shadow:4px;
+
+}
+label{
+    margin: 30px;
+}
+
+
+.subcontainer1{
+    background-color: #dedede;
+    width: 300px;
+    height: 150px;
+
+    margin-left: 475px;
+    margin-top: 35px;
+}
+.surper-sub-container1{
+margin-top: 23px;
+width: 300px;
+height: 70px;
+background-color: darkgrey;
+}
+   a{
+       text-decoration: none;
+   }
+   h1{
+    
+    color: blue;
+}
+</style>
+</head>
+<body>
+    {% include 'customer/base.html' with customer=request.user.customer %}
+<div class="container"><br><br>
+    <center><h1>Room Booking </h1></center><br>
+    <hr color="orange" width="1200">
+    {% if not hostelcustomer %}
+
+    <center><h2><font color="green"></font></h2></center><br>
+<div class="subcontainer1">
+    <br><br>
+    <center><label><font color="red"><i style="font-size:24px" class="fa">&#xf236;</i>&ensp;Book a Room</label></font></center>
+  
+      
+      <div class="surper-sub-container1"><br>
+     <center><a href="{% url 'customer-room-images' %}">View Details>></a></center>
+    
+      </div>
+    {% else %}
+<center><h2><font color="green">Hostel Room already booked by you</font></h2></center><br>
+<div class="subcontainer1">
+    <br><br>
+    <center><label><font color="red"><i style="font-size:24px" class="fa">&#xf236;</i>&ensp;My Room</label></font></center>
+  
+      
+      <div class="surper-sub-container1"><br>
+     <center><a href="{% url 'customer-room-details' %}">View Details>></a></center>
+    
+      </div>
+    </div>
+    {% endif %}
+
+
+
+</div>
+</body>
+</html>

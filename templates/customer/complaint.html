@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+   body{
+            background: #dedede;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+    background-color: whitesmoke;
+    margin-left: 250px;
+    height:650px;
+    margin-top: 60px;
+    width: 1285px;
+    border-radius: 10px;
+    box-shadow:4px;
+
+}
+textarea {
+    width: 80%;
+    margin-left:100px;
+    height: 300px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: vertical;
+  } 
+  .complaint{margin-left:500px;
+background-color: #4CAF50;
+width:170px;
+border:none;
+color:white;
+padding:10px;
+text-align:center;
+text-decorationnone;
+display:inline-block;
+font-size:16px;}
+h1{
+    color:blue;    
+}
+</style>
+</head>
+<body>
+    {% include 'customer/base.html' with customer=request.user.customer %}
+<div class="container"><br><br>
+    <center><h1>Raise A Complaint</h1>
+    Raise any complaint regarding the hostel to the administration..</center>
+    <hr color="orange" width="1100"><br>
+    <form action="" method="post">
+        {% csrf_token %}
+        {% render_field complaintform.complaint|attr:"required:true" %}<br><br>
+        <input type="submit" value="Raise a complaint"class="complaint">
+        
+    </form>
+</div>
+</body>
+</html>

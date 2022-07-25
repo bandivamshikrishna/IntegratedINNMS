@@ -1,0 +1,210 @@
+{% comment %} <!DOCTYPE html>
+{% load static %}
+{% load widget_tweaks %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+  margin-top: 50px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: url({% static 'core/hostel.jpeg' %});
+  background-repeat: no-repeat;
+  background-size: cover;
+  height:437px;
+
+
+}
+  .container{
+      margin-top: 300px;
+    width: 400px;
+    height:400px;
+    background-color: white;
+    margin-left: 600px;
+    border-radius: 10px;
+
+}
+.subcontainer{
+    width: 400px;
+    height: 70px;
+    border-radius: 4px;
+    background-color: blue;
+    
+
+}
+h1{
+    margin-top: 5px;
+    color:white;
+    
+}
+.username,.pwd{
+    width: 200px;
+    padding: 10px;
+    margin: 15px;
+    border-radius:16px ;
+    border-color: gray;
+   
+    
+    
+    
+}
+button{
+    margin-top: 25px;
+    width: 150px;
+    padding: 10px;
+    background-color: lightslategray;
+    color: white;
+    border: none;
+    border-radius: 15px;
+   
+}
+a{
+    text-decoration: none;
+   
+}
+.errorlist{
+    color:white;
+}
+   
+   
+    </style>
+</head>
+<body >
+    <div>
+    {% include 'core/navbar.html' %}
+    
+    <div class="container">
+        <div class="subcontainer"><br>
+          <center>  <h1>Designer Login</h1></center>
+        </div>
+       <form action="" method="post">
+           {% csrf_token %}
+        <center>
+            {{authform.non_field_errors}}
+            <input type="hidden" name="next" value={{request.GET.next}}>
+            {{authform.username.errors}}
+            {% render_field authform.username|attr:"required:true" class="username" placeholder="usernmae" %}
+            <br>
+            {{authform.password.errors}}
+        {% render_field authform.password|attr:"required:true" class="pwd"  placeholder="password" %}<br>
+        <button>Log in</button><br>
+        <p> Don't have account <a href="{% url 'designer-sign-up' %}"> &emsp; Register here</a> </p>
+        </center>
+    </form>
+    </div>
+    
+</body>
+</html> {% endcomment %}
+
+
+
+
+<!DOCTYPE html>
+{% load static %}
+{% load widget_tweaks %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+  margin-top: 50px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: url({% static 'core/hostel.jpeg' %});
+  background-repeat: no-repeat;
+  background-size: 1600px 800px;
+  height:437px;
+
+
+}
+  .container{
+      margin-top: 150px;
+    width: 400px;
+    height:400px;
+    background-color: white;
+    margin-left: 600px;
+    border-radius: 10px;
+
+}
+.subcontainer{
+    width: 400px;
+    height: 70px;
+    border-radius: 4px;
+    background-color: blue;
+    
+
+}
+h1{
+    margin-top: 5px;
+    color:white;
+    
+}
+.username,.pwd{
+    width: 200px;
+    padding: 10px;
+    margin: 0px;
+  
+    border-color: gray;
+   
+    
+    
+    
+}
+button{
+    margin-top: 25px;
+    width: 150px;
+    padding: 10px;
+    background-color: lightslategray;
+    color: white;
+    border: none;
+    border-radius: 15px;
+   
+}
+a{
+    text-decoration: none;
+   
+}
+.errorlist{
+    color:white;
+}
+label{
+    margin-left:-150px;
+
+}
+   
+    </style>
+</head>
+<body >
+    <div>
+    {% include 'core/navbar.html' %}
+    
+    <div class="container">
+        <div class="subcontainer"><br>
+          <center>  <h1>Designer Login</h1></center>
+        </div><br><br><br>
+       
+       <form action="" method="post">
+           {% csrf_token %}
+        <center>
+            {{authform.non_field_errors}}
+            <input type="hidden" name="next" value={{request.GET.next}}>
+            <label>user name:</label><br>
+            {{authform.username.errors}}
+            {% render_field authform.username|attr:"required:true" class="username" placeholder="usernmae" %}
+            <br><br><br>
+            <label>password</label><br>
+            {{authform.password.errors}}
+        {% render_field authform.password|attr:"required:true" class="pwd"  placeholder="password" %}<br>
+        <button>Log in</button><br>
+        <p> Don't have account <a href="{% url 'customer-sign-up' %}"> &emsp; Register here</a> </p>
+        </center>
+    </form>
+    </div>
+    
+</body>
+</html>

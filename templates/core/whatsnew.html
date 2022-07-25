@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <title>Document</title>
+  <style>
+    body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: ghostwhite;
+}
+
+
+
+.font-img{
+  margin-top:30px;
+  margin-left: 50px;
+  border-radius: 18px;
+  border: 5px;
+}
+
+h1{
+  margin-top: -380px;
+  margin-left: 980px;
+  color: red;
+}
+.para{
+  margin-left:850px;
+}
+
+
+ p{
+   margin-left:50px;
+   margin-top:120px;
+ }
+ .checked {
+  color: orange;
+}
+.rating1{
+  margin-left: 200px;
+}
+.rating2{
+  margin-left: 550px;
+  margin-top: -100px;
+}
+.rating3{
+  margin-left: 1000px;
+  margin-top: -100px;
+}
+.a{
+
+  
+  font-weight: 900;
+  font-size: 25px;
+  margin-top: 10px;
+  margin-left: -400px;
+}
+a{
+  text-decoration: none;
+  color: green;
+}
+
+
+.container{
+          
+   
+    height:500px;
+   
+    width: 1200px;
+    border-radius: 10px;
+    box-shadow:4px;
+}
+
+.cube-container{
+    margin-left:70%;
+    margin-top:-600px;
+    width: 25em;
+    height: 25em;
+    text-align: center;
+    perspective: 75em;
+}
+.cube{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition-duration: 1s;
+    
+
+}
+.cube-side{
+    position:absolute;
+    margin-top:-20px;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border: 1px solid black;
+    background-size: cover;
+
+}
+.submit{ background-color: #4CAF50;
+    width:170px;
+    margin-left:200px;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;}    
+
+.apply {
+    background-color: #4CAF50;
+    margin-left:800px;
+    width:170px;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+{# front side #}
+.cube-side:nth-child(1){
+    transform: rotateY(0deg) translateZ(12.5em);
+    background-image: url({{room.front.url}});
+    background-repeat: no-repeat;
+    background-size: 400px 400px;
+    
+}
+{# right side #}
+.cube-side:nth-child(2){
+    transform: rotateY(90deg) translateZ(12.5em);
+    background-image: url({{room.right.url}});
+    background-repeat: no-repeat;
+    background-size: 400px 400px;
+
+}
+{# Back side #}
+.cube-side:nth-child(3){
+    transform: rotateY(180deg) translateZ(12.5em);
+    background-image: url({{room.back.url}});
+    background-repeat: no-repeat;
+    background-size: 400px 400px;
+   
+
+}
+{# Left side #}
+.cube-side:nth-child(4){
+    transform: rotateY(-90deg) translateZ(12.5em);
+    background-image: url({{room.left.url}});
+    background-repeat: no-repeat;
+    background-size: 400px 400px;
+
+}
+{# Bottom side #}
+.cube-side:nth-child(5){
+    transform: rotateX(-90deg) translateZ(12.5em);
+    background-image: url({{room.bottom.url}});
+    background-repeat: no-repeat;
+    background-size: 400px 400px;
+    
+
+}
+{# Top Side #}
+.cube-side:nth-child(6){
+    transform: rotateX(90deg) translateZ(12.5em);
+    background-image: url({{room.top.url}});
+    background-repeat: no-repeat;
+    background-size: 400px 400px;
+
+}
+.radio-button{
+  margin-top:-10px;
+    margin-bottom: 5em;
+}
+.radio-button:checked ~.cube{
+    transition-duration: 3s;
+    transition-timing-function: cubic-bezier(0.19,1,0.22,1);
+}
+.radio-button:nth-child(1):checked ~.cube{
+    transform: rotateX(-15deg) rotateY(20deg);
+    
+}
+.radio-button:nth-child(2):checked ~.cube{
+    transform: rotateX(-15deg) rotateY(180deg);
+
+}
+.radio-button:nth-child(3):checked ~.cube{
+    transform: rotateX(-15deg) rotateY(90deg);
+
+}
+.radio-button:nth-child(4):checked ~.cube{
+    transform: rotateX(-15deg) rotateY(-90deg);
+
+}
+.radio-button:nth-child(5):checked ~.cube{
+    transform: rotateX(-105deg) rotateY(0deg);
+
+}
+.radio-button:nth-child(6):checked ~.cube{
+    transform: rotateX(75deg) rotateY(0deg);
+
+}
+  </style>
+</head>
+<body>  
+
+  {% include 'core/navbar.html' %}
+  <div class="font-img">
+  <div> 
+  <img src="{% static 'core/distrubing.webp' %}" width="50%" height="400px"  class="font-img">
+  <h1>"Hostel Story"</h1>
+  <p class="para">Hostel is place where a group of individual people live together in a single room <br><br> for their livelihood.Hostel is also a place of noisy.Room Mates always disturb us<br> <br> while studying. <br><br> </p>
+
+ 
+  <br><br><br><br><br><br><br>
+ 
+  
+    
+   <hr>
+
+
+</div> 
+<center><h4><font size="8" color="#d90026">How About Room Customization</font></h4></center><br>
+<center>How About room Customization where you can customize your room based on your needs which gives you a pleasant environment to live and studying in the hostel.
+<br>But the Room Customization feature is available to the customers who are wiling to stay in the hostel for more than 1 year.<br>
+So think twice to stay in a hostel where you have to stay, in a noise room or a customized pleasant room.</center>
+
+
+    <div class="container">
+        <img src="{% static 'core/studying.jpg' %}"width="50%"height="600px" class="font-img">
+      
+            <div class="cube-container">
+                <input class="radio-button" type="radio" name="cube-gallery" id="" checked>Front
+                <input class="radio-button" type="radio" name="cube-gallery" id="">Back
+                <input class="radio-button" type="radio" name="cube-gallery" id="">Left
+                <input class="radio-button" type="radio" name="cube-gallery" id="">Right
+                <input class="radio-button" type="radio" name="cube-gallery" id="">Top
+                <input class="radio-button" type="radio" name="cube-gallery" id="">Bottom
+                <div class="cube">
+                    <div class="cube-side">front</div>
+                    <div class="cube-side">right</div>
+                    <div class="cube-side">back</div>
+                    <div class="cube-side">left</div>
+                    <div class="cube-side">bottom</div>
+                    <div class="cube-side">top</div>
+                </div>
+           
+        </div> 
+        
+        
+    </div>
+    <br><br><br><br>
+</body>
+</html>
+</div>
+  </body>
+</html>

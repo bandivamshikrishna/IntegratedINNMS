@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container{
+        background-color: whitesmoke;
+        margin-left: 252px;
+       position:static;
+        margin-top: 64px;
+        width: 1260px;
+        border-radius: 10px;
+        box-shadow:4px;
+    
+    }
+    h1{
+        color:blue;
+    }
+    .container-left{
+        margin-left:150px;
+        position:relative;
+        background-color: whitesmoke;
+
+    
+    }
+    .container-right{
+        margin-top:-520px;
+        margin-left:900px;
+        position:relative;
+        background-color: whitesmoke;
+
+    
+    }
+    input[type=submit]{
+
+        margin-left:550px;
+        margin-top:0px;
+        padding:10px;
+        background-color:blue;
+        color:white;
+        border-radius:4px;
+        border:none;
+
+    }
+</style>
+<body>
+    {% include 'designer/base.html' with designer=request.user.designer %}
+    <div class="container">
+        <center><h1>Update Room</h1></center>
+        <hr color="orange" width="1100"><br>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+        <div class="container-left">
+        <label >Left</label><br>
+        <img src="{{room.left.url}}" width="150" height="100"><br>
+        {% render_field roomupdateform.left %}<br><br>
+
+        <label>top</label><br>
+        <img src="{{room.top.url}}" width="150" height="100"><br>
+        {% render_field roomupdateform.top %}<br><br>
+        
+            <label>front</label><br>
+            <img src="{{room.front.url}}" width="150" height="100"><br>
+            {% render_field roomupdateform.front %}<br><br>
+    
+        
+        </div>
+
+
+        <div class="container-right">
+        <label>right</label><br>
+        <img src="{{room.right.url}}" width="150" height="100"><br>
+        {% render_field roomupdateform.right %}<br><br>
+        <label>bottom</label><br>
+        <img src="{{room.bottom.url}}" width="150" height="100"><br>
+        {% render_field roomupdateform.bottom %}<br><br>
+        <label>back</label><br>
+        <img src="{{room.back.url}}" width="150" height="100"><br>
+        {% render_field roomupdateform.back %}<br><br>
+
+    </div>
+
+    
+
+        <input type="submit" value="view room">
+    </div>
+</body>
+</html>

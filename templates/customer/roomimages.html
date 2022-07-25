@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+         body{
+            background-color: ghostwhite;
+           font-family: Arial, Helvetica, sans-serif;
+        }
+        .container{
+    background-color: whitesmoke;
+    margin-left: 250px;
+    position: static;
+    margin-top: 60px;
+    width: 1275px;
+    border-radius: 10px;
+    box-shadow:4px;
+
+}
+.single-bedroom,.triple-bedroom{
+    margin-left: 150px;
+   
+}
+.double-bedroom,.four-bedroom{
+  
+    margin-left: 700px;
+ 
+
+}
+.double,.four{
+    margin-top: -290px;
+}
+.six-bedroom{
+    margin-left: 350px;
+}
+p{
+    margin-left: 15px;
+}
+h1{
+    color:blue;
+}
+
+</style>
+</head>
+<body>
+    {% include 'customer/base.html' with customer=request.user.customer %}
+<div class="container"><br><br>
+    <center><h1>Room Images</h1></center>
+    <hr color="orange" width="1100"><br>
+    <div class=" single-bedroom">
+<a href="{% url 'customer-room-registration' singleroom.id %}"><img src="{{singleroom.room_pic.url}} "width="350" height="200"></a><br>
+<p>{{singleroom.room_type}}<br><br>
+    fees:{{singleroom.room_fees}}/-</p>
+</div>
+
+<div class="double-bedroom ">
+<div class="double">
+    <a href="{% url 'customer-room-registration' doubleroom.id %}"><img src="{{doubleroom.room_pic.url}}"width="350" height="200" ></a><br>
+    <p>{{doubleroom.room_type}}<br><br>
+        fees:{{doubleroom.room_fees}}/-</p>
+
+    
+
+    </div>
+</div>
+<br><br>
+<div class="triple-bedroom ">
+    <a href="{% url 'customer-room-registration' tripleroom.id %}"><img src="{{tripleroom.room_pic.url}} "width="350" height="200"></a><br>
+   
+    <p>
+        {{tripleroom.room_type}}<br><br>
+        fees:{{tripleroom.room_fees}}/-</p>
+    </div>
+
+    
+<div class="four-bedroom ">
+    <div class="four">
+        <a href="{% url 'customer-room-registration' quadroom.id %}"><img src="{{quadroom.room_pic.url}} "width="350" height="200" ></a><br>
+        <p> {{quadroom.room_type}}<br><br>
+            fees:{{quadroom.room_fees}}/-
+        </p>
+   
+        </div>
+    </div>
+    <br><br>
+
+    <div class="six-bedroom">
+        <a href="{% url 'customer-room-registration' hexaroom.id %}"><img src="{{hexaroom.room_pic.url}}" width="350" height="200"></a><br>
+    <p>
+        {{hexaroom.room_type}}<br><br>
+        fees:{{hexaroom.room_fees}}/-
+    </p>                                
+        </div>
+
+
+</div>
+</body>
+</html>

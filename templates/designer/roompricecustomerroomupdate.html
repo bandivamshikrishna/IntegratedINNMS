@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            background-color: whitesmoke;
+            margin-left: 252px;
+            height:650px;
+            margin-top: 64px;
+            width: 1280px;
+            border-radius: 10px;
+            box-shadow:4px;
+        
+        }
+        .edit{
+            margin: 5px;
+            margin-left: 200px;
+            padding: 10px;
+            width: 700px;
+            border-radius: 4px;
+            border: 2px solid gray;
+        }
+        .update{   background-color: green;
+            margin-left:500px;
+            padding:10px;
+            width:170px;
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            border: none;
+            text-decoration:none;
+            width: 150px;
+            padding: 10px;
+            background-color: green;
+            color: white;
+            border-radius: 8px;
+            margin-left: 480px;
+            margin-top:10px;
+            border: none;}
+    </style>
+</head>
+<body>
+    {% include 'designer/base.html' with designer=request.user.designer %}
+    
+        <div class="container"><br>
+         <center><h1>Room Price For Updated Customer Room</h1></center>
+        <hr color="orange" width="1100"><br><br><br><br><br>
+        <form action="" method="post">
+            {% csrf_token %}
+            <label> Price</label><br>
+            {% render_field roompriceform.price|attr:"class:edit" %}<br>
+            <input type="submit" value="submit" class="update">
+        </form>
+        </div>
+</body>
+</html>

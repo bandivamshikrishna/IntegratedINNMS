@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+ body{
+            background-color: ghostwhite;
+           font-family: Arial, Helvetica, sans-serif;
+        }
+        .container{
+    background-color: whitesmoke;
+    margin-left: 250px;
+    height: 677px;
+    margin-top: 60px;
+    width: 1275px;
+    border-radius: 10px;
+    box-shadow:4px;
+
+}
+
+
+label{
+    margin-top: 80px;
+    margin-left: 150px;
+}
+.succes{
+    margin: 5px;
+    margin-left: 150px;
+    padding: 10px;
+    width: 700px;
+    border-radius: 4px;
+    border: 2px solid gray ;
+}
+.update{
+    width: 200px;
+margin-left: 300px;
+padding: 10px;
+background-color: green;
+color: white;
+border-radius: 4px;
+border: none;
+
+
+}
+.Cancel{
+    width: 200px;
+margin-left: 50px;
+padding: 10px;
+background-color: orange;
+color: white;
+border-radius: 4px;
+border: none;
+}
+h1{
+    color:blue;
+}
+
+    </style>
+</head>
+<body>
+    {% include 'admin/base.html' %}
+    <div class="container"><br><br><br>
+        <center><h1>Edit Menu</h1></center>
+        <hr color="orange" width="1100"><br>
+        <form action="" method="post">
+            {% csrf_token %}
+        <label>Day</label><br>
+        {% render_field menuform.day|attr:"class:succes" %}<br>
+        <label>Break Fast </label><br>
+        {% render_field menuform.breakfast|attr:"class:succes" %}<br>
+        <label>Lunch</label><br>
+        {% render_field menuform.lunch|attr:"class:succes" %}<br>
+        <label>Dinner</label><br>
+        {% render_field menuform.dinner|attr:"class:succes" %}<br><br><br>
+        <input type="submit" value="Update" class="update">
+        <a href="{% url 'admin-menu' %}" class="Cancel">Cancel</a>
+    </form>
+    
+</div>
+</body>
+</html>

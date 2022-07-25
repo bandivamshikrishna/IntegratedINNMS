@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            background-color: whitesmoke;
+            margin-left: 250px;
+            height:650px;
+            margin-top: 60px;
+            width: 1275px;
+            border-radius: 10px;
+            box-shadow:4px;
+        
+        }
+        .link{
+            margin-left:45%;
+            display: block;
+            width: 100px;
+            background-color: blue;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 25px;
+            padding: 10px;
+            border:none;
+            border-radius: 4px;
+            
+        }
+        h1{
+            color: blue;
+        }
+        .viewroom{
+            text-decoration:none;
+        }
+        .owncustomization{
+            width: 150px;
+            padding: 10px;
+            background-color: green;
+            color: white;
+            border-radius: 8px;
+            margin-left: 500px;
+            margin-top:10px;
+            border: none;
+            text-decoration:none;
+            
+            }
+    </style>
+</head>
+<body>
+    {% include 'customer/base.html' with customer=request.user.customer %}
+    <div class="container"><br><br>
+        {% if not roomcustomized %}
+            <center><h1>Various Customized Rooms by Designers</h1></center>
+            <hr color="orange" width="1100"><br><br>
+            <table border="1" height="200" width="1000" align="center" >
+            <tr align="center" background-color="blue">
+                <th >s.no</th>  <th>Room</th> <th>Theme</th><th>Designer</th> <th>price</th>
+            </tr>
+            {% for room in rooms %}
+                <tr align="center" >
+                    <td>{{forloop.counter}}</td>  
+            
+                    <td><a href="{% url 'customer-view-room' room.id %}" class="viewroom">View Room</a></td>
+                    <td>{{room.theme|capfirst}}</td>
+                    <td>{{room.designer.user|capfirst}}</td>
+                    <td>{{room.price}}</td>
+                </tr>
+            {% endfor %} 
+        </table> 
+        <br>
+        <center><h1>How About your Own Customized Room</h1></center>
+        <hr color="orange" width="1100"><br><br>
+                <a href="{% url 'customer-own-customization' %}" class="owncustomization">Room customization</a>
+        {% endif %} 
+        
+
+        {% if roomcustomized %}
+            {% if room %}
+                {% if room_own_customized %}
+                <center><h1>Customization</h1></center>
+                <hr color="orange" width="1100"><br>
+                <h3 style="text-align:center">Mr.{{request.user}} your room is already been customized by yourself.</h3>
+                <h3  style="text-align:center">please! follow the link to view your room.</h3><br><br><br><br>
+                    <a href="{% url 'customer-viewing-own-customized-room' room.id %}"class="link">View Room</a>
+                
+                {% else %}
+                <center><h1>Customization</h1></center>
+                <hr color="orange" width="1100"><br>
+                <h3 style="text-align:center">Mr.{{request.user}} your room is already been customized by Mr.{{room.designer.user|capfirst}}</h3>
+                <h3  style="text-align:center">please! follow the link to view your room.</h3><br><br><br><br>
+                    <a href="{% url 'customer-view-customized-room' room.room.id %}" class="link">View Room</a> 
+                {% endif %}
+            {% endif %}
+        {% endif %}
+
+        
+    
+    </div>
+</body>
+</html>

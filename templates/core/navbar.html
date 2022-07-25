@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<!--Get your own code at fontawesome.com-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css">
+    <style>
+        body{
+            margin:0px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+               ul{
+                   margin:0px;
+          padding:0px;
+      list-style-type: none;
+      height:45px;
+   background-color:#2c3e50;
+  overflow:hidden;
+}
+      li{
+          float:right;
+      }
+      li a {
+display: block;
+color: white;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+}
+li a:hover{
+    background-color:black;
+}
+
+li a, .dropbtn {
+display: inline-block;
+color: whitesmoke;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+}
+li.dropdown {
+display: inline-block;
+}
+
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: #f9f9f9;
+min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+}
+
+.dropdown-content a {
+color: black;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+
+.dropdown:hover .dropdown-content {
+display: block;
+}
+
+    </style>
+</head>
+<body>   
+  <ul>
+      <li style="font-size:35px;float:left;color:white">&ensp;<i class='fas fa-university' style='font-size:30px;color:white'>&ensp;</i>HOSTEL MANGEMENT SYSTEM</li>
+      <li><a href="{% url 'admin-sign-in' %}">Admin login</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">Designer</a>
+                <div class="dropdown-content">
+                  <a href="{% url 'designer-sign-up' %}">Designer registration</a>
+                  <a href="{% url 'designer-sign-in' %}">Designer login</a>
+                </div>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">user</a>
+                <div class="dropdown-content">
+                  <a href="{% url 'customer-sign-up' %}">user registration</a>
+                  <a href="{% url 'customer-sign-in' %}">user login</a>
+                
+                </div>
+            <li><a href="{% url 'whatsnew' %}">Whats new</a></li>
+            <li><a href="{% url 'home' %}">Home</a></li>
+
+
+  </ul>
+
+</body>
+</html>

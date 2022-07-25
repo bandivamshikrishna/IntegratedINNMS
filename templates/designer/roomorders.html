@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            background-color: whitesmoke;
+            margin-left: 252px;
+            height:650px;
+            margin-top: 64px;
+            width: 1280px;
+            border-radius: 10px;
+            box-shadow:4px;
+        
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+          }
+          h1{
+            color:blue;
+          }
+          .viewroom{
+            text-decoration:none;
+          }
+    </style>
+</head>
+<body>
+    {% include 'designer/base.html' with designer=request.user.designer %}
+    <div class="container"><br>
+        <center><h1> My Room Orders</h1></center>
+        <hr color="orange" width="1100"><br>
+        <table border="1" height="200" width="1000" align="center" >
+        <tr align="center" background-color="blue">
+            <th >s.no</th>  <th>view Room</th> <th>Customer</th><th>Room Number</th> <th>Theme</th><th>Price</th> 
+        </tr>
+        {% for room in myrooms %}
+        <tr align="center" >
+            <td>{{forloop.counter}}</td>  
+    
+            <td><a href="{% url 'designer-viewing-customer-order-room' room.room.id %}" class="viewroom">View Room</a></td>
+            <td>{{room.customer.user}}</td>
+            <td>{{room.customer.room_number}}</td>
+            <td>{{room.room.theme|capfirst}}</td>
+            <td>{{room.price}}</td>
+          
+        {% endfor %}  
+        </tr>
+        
+    </table>
+
+
+
+
+    <center><h1> Customer Own Customized Room Orders</h1></center>
+    <hr color="orange" width="1100"><br>
+    <table border="1" height="200" width="1000" align="center" >
+    <tr align="center" background-color="blue">
+        <th >s.no</th>  <th>view Room</th> <th>Customer</th> <th>Room Number</th><th>Price</th> <th>Updated Room</th>
+    </tr>
+    {% for room in customerrooms %}
+    <tr align="center" >
+        <td>{{forloop.counter}}</td>  
+
+        <td><a href="{% url 'designer-viewing-customer-own-customized-room' room.id  %}" class="viewroom">View Room</a></td>
+        <td>{{room.customer.user}}</td>
+        <td>{{room.customer.room_number}}</td>
+        <td>{{room.price}}</td>
+        <td>{{room.updated_room}}</td>
+      
+    {% endfor %}   
+    </tr>
+    
+</table>
+
+
+
+</body>
+</html>
